@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mixcloud/static/css/main.f07bc1d6.css",
+    "main.js": "/mixcloud/static/js/main.805f3549.js",
+    "static/js/453.ee23f195.chunk.js": "/mixcloud/static/js/453.ee23f195.chunk.js",
+    "index.html": "/mixcloud/index.html",
+    "main.f07bc1d6.css.map": "/mixcloud/static/css/main.f07bc1d6.css.map",
+    "main.805f3549.js.map": "/mixcloud/static/js/main.805f3549.js.map",
+    "453.ee23f195.chunk.js.map": "/mixcloud/static/js/453.ee23f195.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f07bc1d6.css",
+    "static/js/main.805f3549.js"
+  ]
+}

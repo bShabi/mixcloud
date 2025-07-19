@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/components/SearchContainer.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1752936510881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752936538498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,5 @@\n-import React, { useImperativeHandle, useRef, forwardRef, useState, useEffect } from 'react';\n-import { useDispatch, useSelector } from 'react-redux';\n-import { fetchSearchResults, resetSearch } from '../slices/searchSlice';\n+import React, { useImperativeHandle, useRef, forwardRef, useState, useEffect,Fragment } from 'react';\n import useSearch from '../useHook/useSearch';\n import useView from '../useHook/useView';\n const SearchContainer = forwardRef((props, ref) => {\n   \n"
+                },
+                {
+                    "date": 1752936544922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n   } = useSearch();\n   const {viewMode,setViewMode} = useView();\n \n     useEffect(() => { \n-    if (input.length == 0) \n+    if (input.length === 0) \n       restResult();\n     }, [input]);\n \n \n"
+                },
+                {
+                    "date": 1752936566351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,11 +17,11 @@\n   } = useSearch();\n   const {viewMode,setViewMode} = useView();\n \n     useEffect(() => { \n-    if (input.length === 0) \n+      if (input.length === 0) \n       restResult();\n-    }, [input]);\n+    }, [input,restResult]);\n \n \n   const handleSearch = () => {\n     if(input.trim() === '') \n"
+                }
+            ],
+            "date": 1752936510881,
+            "name": "Commit-0",
+            "content": "import React, { useImperativeHandle, useRef, forwardRef, useState, useEffect } from 'react';\nimport { useDispatch, useSelector } from 'react-redux';\nimport { fetchSearchResults, resetSearch } from '../slices/searchSlice';\nimport useSearch from '../useHook/useSearch';\nimport useView from '../useHook/useView';\nconst SearchContainer = forwardRef((props, ref) => {\n  \n  const inputRef = useRef();\n  const [input, setInput] = useState('');\n  const {\n    results,\n    loading,\n    error,\n    hasMore,\n    search,\n    loadMore,\n    restResult,\n    selectArtist\n  } = useSearch();\n  const {viewMode,setViewMode} = useView();\n\n    useEffect(() => { \n    if (input.length == 0) \n      restResult();\n    }, [input]);\n\n\n  const handleSearch = () => {\n    if(input.trim() === '') \n      return;\n    search(input);\n  };\n\n  const handleSelect = (user) => {\n    selectArtist(user);\n  };\n\n  useImperativeHandle(ref, () => ({\n    setSearchTextAndRun: (searchTerm) => {\n      setInput(searchTerm);\n      search(searchTerm);\n      if (inputRef.current) {\n        inputRef.current.focus();\n      }\n    },\n  }));\n\n  return (\n    <Fragment> \n      <div className=\"search-box\">\n        <input\n         className=\"search-input\"\n          type=\"text\"\n          placeholder=\"Search artist...\"\n          value={input}\n          onChange={(e) => setInput(e.target.value)}\n            onKeyDown={(e) => {\n    if (e.key === 'Enter') {\n      handleSearch();\n    }\n  }}\n        />\n        <button onClick={handleSearch} disabled={loading}>Search</button>\n      </div>\n\n{loading ? (\n  <p>Loading...</p>\n) : viewMode === 'list' ? (\n  <ul className=\"results list\">\n    {results.map((user, idx) => (\n      <li key={idx} className=\"result-item\" onClick={() => handleSelect(user)}>\n        <img\n          src={user.pictures?.thumbnail}\n          alt={user.name}\n          width={30}\n          height={30}\n          style={{\n            borderRadius: '50%',\n            verticalAlign: 'middle',\n            marginRight: '8px',\n          }}\n        />\n        {user.user.name}\n      </li>\n    ))}\n  </ul>\n) : (\n  <div className=\"results tile\">\n    {results.reduce((rows, user, idx) => {\n      if (idx % 2 === 0) {\n        rows.push([user]);\n      } else {\n        rows[rows.length - 1].push(user);\n      }\n      return rows;\n    }, []).map((row, rowIndex) => (\n      <div key={rowIndex} className=\"tile-row\">\n        {row.map((user, i) => (\n          <li key={i} className=\"tile-item\" onClick={() => handleSelect(user)}>\n            <img\n              src={user.pictures?.thumbnail}\n              alt={user.name}\n              width={30}\n              height={30}\n              style={{\n                borderRadius: '50%',\n                marginBottom: '4px',\n              }}\n            />\n            <span>{user.user.name}</span>\n          </li>\n        ))}\n      </div>\n    ))}\n  </div>\n)}\n  {error && <p style={{ color: 'red' }}>{error}</p>}\n    <div className=\"search-footer\">\n        {hasMore && !loading && <i className=\"fas fa-arrow-right\" onClick={loadMore}></i>}\n        <button onClick={() => setViewMode('list')} title=\"List View\">\n            <i className=\"fas fa-list\"></i>\n        </button>\n        <button onClick={() => setViewMode('tile')} title=\"Tile View\">\n            <i className=\"fas fa-th-large\"></i>\n        </button>\n      </div>\n    </Fragment>\n  );\n});\n\nexport default SearchContainer;\n"
+        }
+    ]
+}
