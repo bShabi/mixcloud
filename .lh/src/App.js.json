@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/App.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752938307489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752938551486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,19 +15,16 @@\n \n   return (\n     <div className=\"container\">\n       \n-      {/* Left: Search */}\n       <div className=\"column search-section\">\n       <SearchContainer ref={searchRef} />\n       </div>\n \n-      {/* Center: Result */}\n       <div className=\"column result\">\n         <PlayerContainer/>\n       </div>\n \n-      {/* Right: Recent Searches */}\n       <div className=\"column recent\">\n         <RecentSearchContainer onRecentClick={handleRecentClick} />\n       </div>\n \n"
+                }
+            ],
+            "date": 1752938307489,
+            "name": "Commit-0",
+            "content": "import React,{useRef} from 'react';\nimport './App.css';\nimport SearchContainer from './components/SearchContainer';\nimport RecentSearchContainer from './components/RecentSearchContainer';\nimport PlayerContainer from './components/PlayerContainer';\n\nfunction App() {\n    const searchRef = useRef();\n\n  const handleRecentClick = (searchTerm) => {\n    if (searchRef.current) {\n      searchRef.current.setSearchTextAndRun(searchTerm);\n    }\n  };\n\n  return (\n    <div className=\"container\">\n      \n      {/* Left: Search */}\n      <div className=\"column search-section\">\n      <SearchContainer ref={searchRef} />\n      </div>\n\n      {/* Center: Result */}\n      <div className=\"column result\">\n        <PlayerContainer/>\n      </div>\n\n      {/* Right: Recent Searches */}\n      <div className=\"column recent\">\n        <RecentSearchContainer onRecentClick={handleRecentClick} />\n      </div>\n\n    </div>\n  );\n}\n\nexport default App;\n"
+        }
+    ]
+}

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useSearch from '../useHook/useSearch';
 import MixcloudPlayer from '../utils/MixcloudPlayer';
 
-const ResultContainer = () => {
+const PlayerContainer = () => {
   const { artistSelected } = useSearch();
   const [isMobile, setIsMobile] = useState(false);
   const [isShowPlayer, setIsShowPlayer] = useState(false);
@@ -12,13 +12,13 @@ const ResultContainer = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
   useEffect(() => {
     if (artistSelected) {
       setIsShowPlayer(false);
@@ -60,4 +60,4 @@ const ResultContainer = () => {
   );
 };
 
-export default ResultContainer;
+export default PlayerContainer;

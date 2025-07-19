@@ -1,8 +1,9 @@
 import React, { useImperativeHandle, useRef, forwardRef, useState, useEffect,Fragment } from 'react';
 import useSearch from '../useHook/useSearch';
 import useView from '../useHook/useView';
+import UserListView from '../utils/UserListView';
+import UserTileView from '../utils/UserTileView';
 const SearchContainer = forwardRef((props, ref) => {
-  
   const inputRef = useRef();
   const [input, setInput] = useState('');
   const {
@@ -17,10 +18,10 @@ const SearchContainer = forwardRef((props, ref) => {
   } = useSearch();
   const {viewMode,setViewMode} = useView();
 
-    useEffect(() => { 
+  useEffect(() => { 
       if (input.length === 0) 
       restResult();
-    }, [input,restResult]);
+  }, [input,restResult]);
 
 
   const handleSearch = () => {
@@ -60,58 +61,13 @@ const SearchContainer = forwardRef((props, ref) => {
         />
         <button onClick={handleSearch} disabled={loading}>Search</button>
       </div>
-
-{loading ? (
-  <p>Loading...</p>
-) : viewMode === 'list' ? (
-  <ul className="results list">
-    {results.map((user, idx) => (
-      <li key={idx} className="result-item" onClick={() => handleSelect(user)}>
-        <img
-          src={user.pictures?.thumbnail}
-          alt={user.name}
-          width={30}
-          height={30}
-          style={{
-            borderRadius: '50%',
-            verticalAlign: 'middle',
-            marginRight: '8px',
-          }}
-        />
-        {user.user.name}
-      </li>
-    ))}
-  </ul>
-) : (
-  <div className="results tile">
-    {results.reduce((rows, user, idx) => {
-      if (idx % 2 === 0) {
-        rows.push([user]);
-      } else {
-        rows[rows.length - 1].push(user);
-      }
-      return rows;
-    }, []).map((row, rowIndex) => (
-      <div key={rowIndex} className="tile-row">
-        {row.map((user, i) => (
-          <li key={i} className="tile-item" onClick={() => handleSelect(user)}>
-            <img
-              src={user.pictures?.thumbnail}
-              alt={user.name}
-              width={30}
-              height={30}
-              style={{
-                borderRadius: '50%',
-                marginBottom: '4px',
-              }}
-            />
-            <span>{user.user.name}</span>
-          </li>
-        ))}
-      </div>
-    ))}
-  </div>
-)}
+  {loading ? (
+    <p>Loading...</p>
+  ) : viewMode === 'list' ? (
+    <UserListView results={results} handleSelect={handleSelect} />
+  ) : (
+    <UserTileView results={results} handleSelect={handleSelect} />  
+  )}
   {error && <p style={{ color: 'red' }}>{error}</p>}
     <div className="search-footer">
         {hasMore && !loading && <i className="fas fa-arrow-right" onClick={loadMore}></i>}

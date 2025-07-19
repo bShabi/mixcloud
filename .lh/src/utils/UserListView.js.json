@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/utils/UserListView.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752938692149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752938692149,
+            "name": "Commit-0",
+            "content": "import React from 'react';\n\nconst UserListView = ({ results, handleSelect }) => {\n  return (\n    <ul className=\"results list\">\n      {results.map((user, idx) => (\n        <li key={idx} className=\"result-item\" onClick={() => handleSelect(user)}>\n          <img\n            src={user.pictures?.thumbnail}\n            alt={user.name}\n            width={30}\n            height={30}\n            style={{\n              borderRadius: '50%',\n              verticalAlign: 'middle',\n              marginRight: '8px',\n            }}\n          />\n          {user.user.name}\n        </li>\n      ))}\n    </ul>\n  );\n};\n\nexport default UserListView;\n"
+        }
+    ]
+}

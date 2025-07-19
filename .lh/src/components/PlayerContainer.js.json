@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/components/PlayerContainer.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752938281278,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752938566627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,15 +11,15 @@\n   useEffect(() => {\n     const handleResize = () => {\n       setIsMobile(window.innerWidth <= 768);\n     };\n-\n     handleResize();\n     window.addEventListener('resize', handleResize);\n     return () => {\n       window.removeEventListener('resize', handleResize);\n     };\n   }, []);\n+  \n   useEffect(() => {\n     if (artistSelected) {\n       setIsShowPlayer(false);\n     }\n"
+                }
+            ],
+            "date": 1752938281278,
+            "name": "Commit-0",
+            "content": "import React, { useEffect, useState } from 'react';\nimport { motion, AnimatePresence } from 'framer-motion';\nimport useSearch from '../useHook/useSearch';\nimport MixcloudPlayer from '../utils/MixcloudPlayer';\n\nconst PlayerContainer = () => {\n  const { artistSelected } = useSearch();\n  const [isMobile, setIsMobile] = useState(false);\n  const [isShowPlayer, setIsShowPlayer] = useState(false);\n \n  useEffect(() => {\n    const handleResize = () => {\n      setIsMobile(window.innerWidth <= 768);\n    };\n\n    handleResize();\n    window.addEventListener('resize', handleResize);\n    return () => {\n      window.removeEventListener('resize', handleResize);\n    };\n  }, []);\n  useEffect(() => {\n    if (artistSelected) {\n      setIsShowPlayer(false);\n    }\n  }, [artistSelected]);\n\n  const handleImageClick = () => {\n    setIsShowPlayer(true);\n  };\n\n  if (!artistSelected) {\n    return <p>No artist selected</p>;\n  }\n\n  const imageUrl = isMobile\n    ? artistSelected.pictures['320wx320h'] || artistSelected.pictures['medium_mobile']\n    : artistSelected.pictures['640wx640h'] || artistSelected.pictures['extra_large'];\n\n  return (\n    <div className=\"artist-info\">\n      <AnimatePresence mode=\"wait\">\n        <motion.img\n          key={artistSelected.key}\n          layoutId={`artist-image-${artistSelected.key}`}\n          className=\"artist-image\"\n          src={imageUrl}\n          alt={artistSelected.name}\n          onClick={() => handleImageClick()}\n          initial={{ opacity: 0, scale: 0.95 }}\n          animate={{ opacity: 1, scale: 1 }}\n          exit={{ opacity: 0, scale: 0.95 }}\n          transition={{ duration: 0.4 }}\n          style={{ cursor: 'pointer' }}\n        />\n      </AnimatePresence>\n\n      {isShowPlayer && <MixcloudPlayer feedUrl={artistSelected.url} />}\n    </div>\n  );\n};\n\nexport default PlayerContainer;\n"
+        }
+    ]
+}

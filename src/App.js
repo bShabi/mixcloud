@@ -2,7 +2,7 @@ import React,{useRef} from 'react';
 import './App.css';
 import SearchContainer from './components/SearchContainer';
 import RecentSearchContainer from './components/RecentSearchContainer';
-import ResultContainer from './components/ResultContainer';
+import PlayerContainer from './components/PlayerContainer';
 
 function App() {
     const searchRef = useRef();
@@ -16,17 +16,14 @@ function App() {
   return (
     <div className="container">
       
-      {/* Left: Search */}
       <div className="column search-section">
       <SearchContainer ref={searchRef} />
       </div>
 
-      {/* Center: Result */}
       <div className="column result">
-        <ResultContainer/>
+        <PlayerContainer/>
       </div>
 
-      {/* Right: Recent Searches */}
       <div className="column recent">
         <RecentSearchContainer onRecentClick={handleRecentClick} />
       </div>

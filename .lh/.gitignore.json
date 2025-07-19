@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752936598206,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752939209466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,52 @@\n-node_modules\n+# dependencies\n+/node_modules\n+/.pnp\n+.pnp.js\n+\n+# testing\n+/coverage\n+\n+# production\n+/build\n+/dist\n+\n+# misc\n+.DS_Store\n+.env\n+.env.local\n+.env.development.local\n+.env.test.local\n+.env.production.local\n+\n+# logs\n+npm-debug.log*\n+yarn-debug.log*\n+yarn-error.log*\n+\n+# editor directories and files\n+.idea\n+.vscode\n+*.suo\n+*.ntvs*\n+*.njsproj\n+*.sln\n+\n+# OS\n+Thumbs.db\n+ehthumbs.db\n+Desktop.ini\n+\n+# react native (if applicable)\n+.expo/\n+.expo-shared/\n+\n+# optional cache\n+.cache/\n+.next/\n+out/\n+\n+# build analysis\n+report.html\n+\n+# eslint / prettier\n+.eslintcache\n"
                 }
             ],
             "date": 1752936598206,
