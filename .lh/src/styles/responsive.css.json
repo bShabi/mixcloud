@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/styles/responsive.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752939446625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752939446625,
+            "name": "Commit-0",
+            "content": "@media (max-width: 768px) {\n  .container {\n    flex-direction: column;\n    height: auto;\n  }\n\n  .column {\n    border-right: none;\n    border-bottom: 1px solid #ccc;\n    padding: 16px;\n  }\n\n  .column:last-child {\n    border-bottom: none;\n  }\n\n  .search-box input {\n    width: 100%;\n  }\n\n  .tile-row {\n    flex-direction: column;\n    gap: 12px;\n  }\n\n  .tile-item {\n    width: 100%;\n  }\n\n  iframe {\n    max-width: 100%;\n    height: auto;\n  }\n}\n"
+        }
+    ]
+}

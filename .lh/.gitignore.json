@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1752936598206,
@@ -12,6 +12,30 @@
                 {
                     "date": 1752939209466,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,52 @@\n-node_modules\n+# dependencies\n+/node_modules\n+/.pnp\n+.pnp.js\n+\n+# testing\n+/coverage\n+\n+# production\n+/build\n+/dist\n+\n+# misc\n+.DS_Store\n+.env\n+.env.local\n+.env.development.local\n+.env.test.local\n+.env.production.local\n+\n+# logs\n+npm-debug.log*\n+yarn-debug.log*\n+yarn-error.log*\n+\n+# editor directories and files\n+.idea\n+.vscode\n+*.suo\n+*.ntvs*\n+*.njsproj\n+*.sln\n+\n+# OS\n+Thumbs.db\n+ehthumbs.db\n+Desktop.ini\n+\n+# react native (if applicable)\n+.expo/\n+.expo-shared/\n+\n+# optional cache\n+.cache/\n+.next/\n+out/\n+\n+# build analysis\n+report.html\n+\n+# eslint / prettier\n+.eslintcache\n"
+                },
+                {
+                    "date": 1752939612372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,4 +49,5 @@\n report.html\n \n # eslint / prettier\n .eslintcache\n+.hl\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1752939623328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,5 +49,6 @@\n report.html\n \n # eslint / prettier\n .eslintcache\n-.hl\n\\ No newline at end of file\n+.hl\n+./hl/src\n"
+                },
+                {
+                    "date": 1752939641216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,6 +49,6 @@\n report.html\n \n # eslint / prettier\n .eslintcache\n-.hl\n-./hl/src\n+.hl/\n+\n"
+                },
+                {
+                    "date": 1752939648607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,5 +50,6 @@\n \n # eslint / prettier\n .eslintcache\n .hl/\n+hl/\n \n"
+                },
+                {
+                    "date": 1752939657116,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,5 +51,6 @@\n # eslint / prettier\n .eslintcache\n .hl/\n hl/\n+*.hl\n \n"
+                },
+                {
+                    "date": 1752939664248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,5 +52,13 @@\n .eslintcache\n .hl/\n hl/\n *.hl\n+# Ignore .hl folder in root\n+.hl/\n \n+# Ignore src inside hl folder\n+hl/src/\n+\n+# Or recursively ignore any .hl folder\n+**/.hl/\n+\n"
                 }
             ],
             "date": 1752936598206,

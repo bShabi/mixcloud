@@ -1,9 +1,12 @@
 import React,{useRef} from 'react';
-import './App.css';
 import SearchContainer from './components/SearchContainer';
 import RecentSearchContainer from './components/RecentSearchContainer';
 import PlayerContainer from './components/PlayerContainer';
-
+import './App.css';
+import './styles/search.css';
+import './styles/results.css';
+import './styles/recent.css';
+import './styles/player.css';
 function App() {
     const searchRef = useRef();
 

@@ -50,3 +50,15 @@ report.html
 
 # eslint / prettier
 .eslintcache
+.hl/
+hl/
+*.hl
+# Ignore .hl folder in root
+.hl/
+
+# Ignore src inside hl folder
+hl/src/
+
+# Or recursively ignore any .hl folder
+**/.hl/
+
