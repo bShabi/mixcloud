@@ -61,3 +61,8 @@
 .search-footer .active {
   color: #007bff;
 }
+.search-footer button.active {
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+}

@@ -71,11 +71,18 @@ const SearchContainer = forwardRef((props, ref) => {
   {error && <p style={{ color: 'red' }}>{error}</p>}
     <div className="search-footer">
         {hasMore && !loading && <i className="fas fa-arrow-right" onClick={loadMore}></i>}
-        <button onClick={() => setViewMode('list')} title="List View">
-            <i className="fas fa-list"></i>
+        <button
+          onClick={() => setViewMode('list')}
+          title="List View"
+          className={viewMode === 'list' ? 'active' : ''}>
+          <i className="fas fa-list"></i>
         </button>
-        <button onClick={() => setViewMode('tile')} title="Tile View">
-            <i className="fas fa-th-large"></i>
+
+        <button
+          onClick={() => setViewMode('tile')}
+          title="Tile View"
+          className={viewMode === 'tile' ? 'active' : ''}>
+          <i className="fas fa-th-large"></i>
         </button>
       </div>
     </Fragment>
