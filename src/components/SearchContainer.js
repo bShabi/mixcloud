@@ -39,7 +39,6 @@ const SearchContainer = forwardRef((props, ref) => {
     search(searchTerm);
   };
 
-  // כאן אתה חושף אותה ל־ref
   useImperativeHandle(ref, () => ({
     setSearchTextAndRun,
   }));
@@ -53,11 +52,11 @@ const SearchContainer = forwardRef((props, ref) => {
           placeholder="Search artist..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-    if (e.key === 'Enter') {
-      handleSearch();
-    }
-  }}
+          onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSearch();
+          }
+        }}
         />
         <button onClick={handleSearch} disabled={loading}>Search</button>
       </div>
