@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1752936575053,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753106791199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   return (\n     <iframe\n       width=\"100%\"\n       height=\"120\"\n-      src={`https://www.mixcloud.com/widget/iframe/?feed=${feedUrl}&hide_cover=1&light=1`}\n+      src={`https://www.mixcloud.com/widget/iframe/?feed=${feedUrl}&hide_cover=1&light=1&autoplay=1`}\n       allow=\"autoplay; encrypted-media\"\n       title=\"Mixcloud Player\"\n     ></iframe>\n   );\n"
+                },
+                {
+                    "date": 1753106835979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     <iframe\n       width=\"100%\"\n       height=\"120\"\n       src={`https://www.mixcloud.com/widget/iframe/?feed=${feedUrl}&hide_cover=1&light=1&autoplay=1`}\n-      allow=\"autoplay; encrypted-media\"\n+      allow=\"autoplay\"\n       title=\"Mixcloud Player\"\n     ></iframe>\n   );\n };\n"
+                },
+                {
+                    "date": 1753116608551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,41 @@\n-import React from 'react';\n+import React, { useEffect, useRef } from 'react';\n \n const MixcloudPlayer = ({ feedUrl }) => {\n+  const iframeRef = useRef();\n   const encodedUrl = encodeURIComponent(feedUrl);\n+\n+  // שליחת פקודת postMessage ל־iframe\n+  const postToPlayer = (action) => {\n+    if (iframeRef.current && iframeRef.current.contentWindow) {\n+      iframeRef.current.contentWindow.postMessage(action, '*');\n+    }\n+  };\n+\n+  // התחלה אוטומטית לאחר טעינת iframe\n\\ No newline at end of file\n+  const handleLoad = () => {\n+    postToPlayer('play');\n+  };\n+\n   return (\n-    <iframe\n-      width=\"100%\"\n-      height=\"120\"\n-      src={`https://www.mixcloud.com/widget/iframe/?feed=${feedUrl}&hide_cover=1&light=1&autoplay=1`}\n-      allow=\"autoplay\"\n-      title=\"Mixcloud Player\"\n-    ></iframe>\n+    <div className=\"mixcloud-player\">\n+      <iframe\n+        ref={iframeRef}\n+        title=\"Mixcloud Player\"\n+        width=\"100%\"\n+        height=\"120\"\n+        src={`https://www.mixcloud.com/widget/iframe/?feed=${encodedUrl}&hide_cover=1&light=1&autoplay=1`}\n+        frameBorder=\"0\"\n+        allow=\"autoplay; encrypted-media\"\n+        allowFullScreen\n+        onLoad={handleLoad}\n+      ></iframe>\n+\n+      <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>\n+        <button onClick={() => postToPlayer('play')}>▶ Play</button>\n+        <button onClick={() => postToPlayer('pause')}>⏸ Pause</button>\n+      </div>\n+    </div>\n   );\n };\n-export default MixcloudPlayer;\n+\n+export default MixcloudPlayer;\n"
                 }
             ],
             "date": 1752936575053,

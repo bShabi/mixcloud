@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752938707076,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753201351631,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,38 +1,26 @@\n import React from 'react';\n \n const UserTileView = ({ results, handleSelect }) => {\n-  const rows = results.reduce((acc, user, idx) => {\n-    if (idx % 2 === 0) {\n-      acc.push([user]);\n-    } else {\n-      acc[acc.length - 1].push(user);\n-    }\n-    return acc;\n-  }, []);\n-\n   return (\n-    <div className=\"results tile\">\n-      {rows.map((row, rowIndex) => (\n-        <div key={rowIndex} className=\"tile-row\">\n-          {row.map((user, i) => (\n-            <li key={i} className=\"tile-item\" onClick={() => handleSelect(user)}>\n-              <img\n-                src={user.pictures?.thumbnail}\n-                alt={user.name}\n-                width={30}\n-                height={30}\n-                style={{\n-                  borderRadius: '50%',\n-                  marginBottom: '4px',\n-                }}\n-              />\n-              <span>{user.user.name}</span>\n-            </li>\n-          ))}\n-        </div>\n+    <ul className=\"results tile-grid\">\n+      {results.map((user, i) => (\n+        <li key={i} className=\"tile-item\" onClick={() => handleSelect(user)}>\n+          <img\n+            src={user.pictures?.thumbnail}\n+            alt={user.name}\n+            width={30}\n+            height={30}\n+            style={{\n+              borderRadius: '50%',\n+              marginBottom: '4px',\n+            }}\n+          />\n+          <span>{user.user.name}</span>\n+        </li>\n       ))}\n-    </div>\n+    </ul>\n   );\n };\n \n-export default UserTileView;\n+\n+  export default UserTileView;\n"
                 }
             ],
             "date": 1752938707076,

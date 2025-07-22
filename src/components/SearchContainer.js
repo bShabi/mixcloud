@@ -3,6 +3,7 @@ import useSearch from '../useHook/useSearch';
 import useView from '../useHook/useView';
 import UserListView from '../utils/UserListView';
 import UserTileView from '../utils/UserTileView';
+
 const SearchContainer = forwardRef((props, ref) => {
   const inputRef = useRef();
   const [input, setInput] = useState('');
@@ -33,15 +34,14 @@ const SearchContainer = forwardRef((props, ref) => {
   const handleSelect = (user) => {
     selectArtist(user);
   };
+  const setSearchTextAndRun = (searchTerm) => {
+    setInput(searchTerm);
+    search(searchTerm);
+  };
 
+  // כאן אתה חושף אותה ל־ref
   useImperativeHandle(ref, () => ({
-    setSearchTextAndRun: (searchTerm) => {
-      setInput(searchTerm);
-      search(searchTerm);
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    },
+    setSearchTextAndRun,
   }));
 
   return (
